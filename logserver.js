@@ -5,12 +5,14 @@ const app = express();
 // Define a port
 const port = process.env.PORT || 8080;
 
+app.use(express.json())
+
 // Define a simple route
 app.get('/', async  (req, res) => {
   res.send('Hello, this is your Node.js server running locally!');
 });
 
-app.post('/', (req, res) => {
+app.post('/', async  (req, res) => {
     console.log("Alen send:")
     console.log(JSON.stringify(req.body))
     res.sendStatus(200)
