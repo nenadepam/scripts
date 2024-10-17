@@ -4,7 +4,7 @@ const app = express();
 
 // Define a port
 const port = process.env.PORT || 8080;
-
+let loggerData= '';
 app.use(express.json())
 
 // Define a simple route
@@ -14,8 +14,9 @@ app.get('/', async  (req, res) => {
 
 app.post('/', async  (req, res) => {
     console.log("Alen send:")
+    loggerData = loggerData +' \n ' + JSON.stringify(req.body)
     console.log(JSON.stringify(req.body))
-    res.sendStatus(200)
+    res.status(200).send(loggerData)
   });
   
 // Start the server
